@@ -366,6 +366,7 @@
     }
 
     .gallery {
+      position: relative;
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
@@ -374,6 +375,29 @@
       padding: 0;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
+    }
+
+    .gallery-path {
+      position: absolute;
+      top: 54%;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(135deg, #ff7cba, #ff3f87);
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .gallery:hover .gallery-path {
+      transform: scaleY(1.6);
+      opacity: 0.95;
+      box-shadow: 0 0 18px rgba(255, 62, 128, 0.4);
+    }
+
+    .memory-card {
+      z-index: 1;
     }
 
     .gallery::-webkit-scrollbar {
@@ -401,16 +425,16 @@
 
     .memory-card {
       flex: 0 0 auto;
-      width: min(260px, calc(100% - 1.5rem));
-      min-width: 220px;
+      width: min(240px, calc(100% - 1.5rem));
+      min-width: 180px;
       position: relative;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: none;
-      transform: translateY(50px) rotate(var(--rotate, 0deg));
+      transform: translateY(50px);
       opacity: 0;
       transition: all 0.6s ease;
-      border: 6px solid white;
+      border: 6px solid rgba(255, 105, 180, 0.85);
       background: white;
       scroll-snap-align: center;
     }
@@ -422,9 +446,20 @@
 
     .memory-img {
       width: 100%;
-      height: 310px;
+      height: 260px;
       object-fit: cover;
       transition: transform 0.4s ease;
+    }
+
+    @media (max-width: 480px) {
+      .memory-card {
+        width: min(210px, calc(100% - 1rem));
+        min-width: auto;
+      }
+
+      .memory-img {
+        height: 220px;
+      }
     }
 
     .memory-card:hover .memory-img {
@@ -454,12 +489,12 @@
       position: absolute;
       width: 78px;
       height: 22px;
-      background: white;
+      background: rgba(255, 105, 180, 0.9);
       top: 0;
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
-      border: 1px solid rgba(255, 255, 255, 0.95);
+      border: none;
       border-radius: 0 0 10px 10px;
       box-shadow: none;
     }
@@ -921,7 +956,7 @@
         rotationAngle: 3,
       },
       {
-        image: "3.jpg",
+        image: "Nala1.jpg",
         caption:
           "Our first road trip together! You fell asleep and I drew a tiny mustache on you with a marker. You didn't notice for HOURS!",
         emoji: "🚗",
@@ -993,14 +1028,18 @@
       if (!galleryElement) return;
       galleryElement.innerHTML = "";
 
+      const path = document.createElement("div");
+      path.className = "gallery-path";
+      galleryElement.appendChild(path);
+
       memories.forEach((memory, index) => {
         const card = document.createElement("div");
         card.className = "memory-card";
-        card.style.setProperty("--rotate", `${memory.rotationAngle}deg`);
+        card.style.setProperty("--rotate", "0deg");
         card.style.animationDelay = `${index * 0.1}s`;
 
         card.innerHTML = `
-          <div class="card-tape" style="--rotate: ${memory.rotationAngle * 2}deg"></div>
+          <div class="card-tape" style="--rotate: 0deg"></div>
           <img class="memory-img" src="${memory.image}" alt="Memory ${index + 1}" />
           <div class="memory-caption">${memory.caption}</div>
           <div class="card-sticker">
@@ -1021,6 +1060,13 @@
         }, 100 + index * 80);
       });
 
+      setTimeout(() => {
+        const path = galleryElement.querySelector(".gallery-path");
+        if (path) {
+          path.style.width = `${galleryElement.scrollWidth}px`;
+        }
+      }, 50);
+
       function scrollToSlide(index) {
         const cards = galleryElement.querySelectorAll(".memory-card");
         if (!cards[index]) return;
@@ -1040,17 +1086,27 @@
         scrollToSlide(currentSlide);
       }
 
+      function startAutoSlide() {
+        clearMemoryLaneInterval();
+        memoryLaneInterval = setInterval(() => {
+          moveSlide(1);
+        }, 3600);
+      }
+
       let currentSlide = 0;
 
       prevSlideBtn.onclick = () => {
         moveSlide(-1);
+        startAutoSlide();
       };
 
       nextSlideBtn.onclick = () => {
         moveSlide(1);
+        startAutoSlide();
       };
 
       scrollToSlide(currentSlide);
+      startAutoSlide();
     }
 
     function renderStep() {
@@ -1129,8 +1185,8 @@
             </div>
 
             <div class="slideshow-controls">
-              <button id="prevSlide" class="btn">← Prev</button>
-              <button id="nextSlide" class="btn">Next →</button>
+              <button id="prevSlide" class="btn-soft">← Prev</button>
+              <button id="nextSlide" class="btn-main">Next →</button>
             </div>
 
             <div class="gallery-container">
