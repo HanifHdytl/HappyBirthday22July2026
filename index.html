@@ -1132,9 +1132,9 @@
         content.innerHTML = `
           <h1>Catch the Birthday Hearts ❤️</h1>
           ${cuteGif("💘")}
-          <p>Let's play a little game! Catch all 7 hearts to unlock the next birthday surprise. 🎁💕</p>
+          <p>Let's play a little game! Catch all 22 hearts to unlock the next birthday surprise. 🎁💕</p>
           <button class="btn-main" onclick="startGame()">Start Game 🎮</button>
-          <div class="score" id="scoreText">Score: 0 / 7</div>
+          <div class="score" id="scoreText">Score: 0 / 22</div>
           <div class="game-box" id="gameBox"></div>
         `;
       }
@@ -1251,7 +1251,7 @@
       const scoreText = document.getElementById("scoreText");
       const gameBox = document.getElementById("gameBox");
 
-      scoreText.textContent = "Score: 0 / 7";
+      scoreText.textContent = "Score: 0 / 22";
       gameBox.innerHTML = "";
 
       heartInterval = setInterval(() => {
@@ -1262,10 +1262,10 @@
 
         heart.onclick = () => {
           gameScore++;
-          scoreText.textContent = `Score: ${gameScore} / 7`;
+          scoreText.textContent = `Score: ${gameScore} / 22`;
           heart.remove();
 
-          if (gameScore >= 7) {
+          if (gameScore >= 22) {
             clearInterval(heartInterval);
             gameBox.innerHTML = `
               <div style="padding:45px 15px; color:#ff2f7d; font-weight:900; font-size:20px; line-height:1.6;">
