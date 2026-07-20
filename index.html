@@ -306,9 +306,10 @@
     }
 
     .memory-lane-container {
-      max-width: 100%;
+      max-width: 900px;
+      width: 100%;
       margin: 0 auto;
-      padding: 0;
+      padding: 0 1rem;
       text-align: left;
     }
 
@@ -374,7 +375,9 @@
       gap: 1.5rem;
       padding: 0;
       scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
     }
 
     .gallery-path {
@@ -446,7 +449,7 @@
 
     .memory-img {
       width: 100%;
-      height: 260px;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
       transition: transform 0.4s ease;
     }
@@ -458,7 +461,7 @@
       }
 
       .memory-img {
-        height: 220px;
+        aspect-ratio: 4 / 5;
       }
     }
 
@@ -487,15 +490,15 @@
 
     .card-tape {
       position: absolute;
-      width: 78px;
-      height: 22px;
+      width: 54px;
+      height: 16px;
       background: rgba(255, 105, 180, 0.9);
-      top: 0;
+      top: -10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
       border: none;
-      border-radius: 0 0 10px 10px;
+      border-radius: 0 0 8px 8px;
       box-shadow: none;
     }
 
@@ -1086,27 +1089,17 @@
         scrollToSlide(currentSlide);
       }
 
-      function startAutoSlide() {
-        clearMemoryLaneInterval();
-        memoryLaneInterval = setInterval(() => {
-          moveSlide(1);
-        }, 3600);
-      }
-
-      let currentSlide = 0;
+      let currentSlide = 1;
 
       prevSlideBtn.onclick = () => {
         moveSlide(-1);
-        startAutoSlide();
       };
 
       nextSlideBtn.onclick = () => {
         moveSlide(1);
-        startAutoSlide();
       };
 
       scrollToSlide(currentSlide);
-      startAutoSlide();
     }
 
     function renderStep() {
