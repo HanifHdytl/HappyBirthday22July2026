@@ -430,6 +430,7 @@
       flex: 0 0 auto;
       width: min(240px, calc(100% - 1.5rem));
       min-width: 180px;
+      aspect-ratio: 4 / 5;
       position: relative;
       border-radius: 20px;
       overflow: hidden;
@@ -448,8 +449,9 @@
     }
 
     .memory-img {
+      display: block;
       width: 100%;
-      aspect-ratio: 4 / 5;
+      height: 100%;
       object-fit: cover;
       transition: transform 0.4s ease;
     }
@@ -945,73 +947,73 @@
 
     const memories = [
       {
-        image: "Nala1.jpg",
+        image: "Kita1.jpg",
         caption:
-          "Remember when we got lost hiking and found that amazing waterfall? Best wrong turn ever! 😂",
-        emoji: "🌊",
+          "Masih ingat nggak waktu kita ke Lobang Jepang bareng yang lain? Waktu itu kita masih saling kenal lebih jauh. Buat aku, itu jadi salah satu momen yang paling seru buat diingat.",
+        emoji: "🌿",
         rotationAngle: -2,
       },
       {
-        image: "Nala1.jpg",
+        image: "Kita2.jpg",
         caption:
-          "That time we stayed up all night just talking and watching the sunrise. I've never laughed so hard in my life!",
-        emoji: "🌅",
+          "Di Kebun Binatang yang kedua kalinya ini, aku jadi keinget waktu first date kita hehe. Waktu itu belum pernah kepikiran kalau kita bakal saling berkomitmen, tapi sekarang nggak nyangka kita udah sedekat ini.",
+        emoji: "🦒",
         rotationAngle: 3,
       },
       {
-        image: "Nala1.jpg",
+        image: "kita3.jpg",
         caption:
-          "Our first road trip together! You fell asleep and I drew a tiny mustache on you with a marker. You didn't notice for HOURS!",
-        emoji: "🚗",
+          "Jujur, foto ini bikin aku salting. Kamu cantik banget malam itu. Rasanya senang banget bisa lihat senyum kamu di bawah gemerlap lampu malam, berdua",
+        emoji: "🌃",
         rotationAngle: -1,
       },
       {
-        image: "4.jpg",
+        image: "Kita4.jpg",
         caption:
-          "Remember our cooking disaster when we tried to make that fancy recipe? The smoke alarm going off, but the pizza we ordered after was the best ever!",
-        emoji: "🍕",
+          "Pool date ini bakal selalu aku inget. Ini pengalaman pertama buat kita berdua, dan rasanya seru banget bisa nyobain hal baru bareng kamu. Sampai sekarang, momen ini masih membekas buat aku.",
+        emoji: "🏊",
         rotationAngle: 2,
       },
       {
-        image: "5.jpg",
+        image: "Kita5.jpg",
         caption:
-          "Our camping trip under the stars. You were terrified of that tiny spider and jumped so high! Still my favorite memory.",
-        emoji: "🏕️",
+          "Duduk di kafe, ngobrol, bercanda, dan saling cerita sama kamu ternyata seseru itu. Quality time sederhana kayak gini yang paling aku suka. Apalagi kita sempat nonton bareng sampai nggak kerasa waktu udah malam.",
+        emoji: "☕",
         rotationAngle: -3,
       },
       {
-        image: "7.jpg",
+        image: "Kita6.jpg",
         caption:
-          "That concert where we danced until our feet hurt. Worth every blister!",
-        emoji: "🎵",
+          "First time mendaki nih wkwk. Gimana, capek nggak perjalanannya? Tapi pas sampai puncak, capenya langsung kebayar. Apalagi bisa nikmatin pemandangan indah bareng kamu yang juga sama indahnya.",
+        emoji: "⛰️",
         rotationAngle: 1,
       },
       {
-        image: "8.jpg",
+        image: "Kita7.jpg",
         caption:
-          "When we built that epic blanket fort during the storm and watched movies all day. Best rainy day ever!",
-        emoji: "🏰",
+          "Aku masih ingat momen ini di Jam Gadang. Tempat ini jadi saksi kalau kita sering keliling kota bareng. Entah kenapa, walaupun berkali-kali ke sini, rasanya nggak pernah bosen.",
+        emoji: "🕰️",
         rotationAngle: -2,
       },
       {
-        image: "1.jpg",
+        image: "Kita8.jpg",
         caption:
-          "Our spontaneous beach day when we skipped class. I still find sand in my backpack sometimes!",
-        emoji: "🏖️",
+          "Ini di Gacoan, tempat favorit kita wkwk. Lucu juga lihat foto ini. Kita lumayan sering ke sini, kadang bawa snack sendiri buat nemenin ngobrol, eh ujung-ujungnya malah kenyang sebelum makan.",
+        emoji: "🍜",
         rotationAngle: 2,
       },
       {
-        image: "2.jpeg",
+        image: "Kita9.jpg",
         caption:
-          "You've always been there for me through thick and thin. I'm so grateful for your friendship. ❤️",
-        emoji: "💕",
+          "Wah, ini waktu aku ulang tahun. Momen ini masih aku inget banget. Awalnya kita cuma saling tukeran gift, tapi ternyata kamu udah nyiapin kado ulang tahun buat aku. Jujur, aku bahagia banget dan sama sekali nggak nyangka. Sekarang gantian ya, kali ini yang ulang tahun kamu. Hehehe.",
+        emoji: "🎂",
         rotationAngle: -1,
       },
       {
-        image: "3.jpg",
+        image: "Kita10.jpg",
         caption:
-          "Happy Birthday to my best friend in the whole world! Here's to many more adventures together!",
-        emoji: "🎂",
+          "Yah, ini dia keseharian kita di kampus. Belajar bareng, berangkat dan pulang kuliah, makan siang, sampai banyak momen yang kita lewatin. Semoga kita bisa terus jalan bareng sampai lulus tepat waktu, meraih cita-cita masing-masing, dan menjalani masa depan yang bahagia bersama.",
+        emoji: "🎓",
         rotationAngle: 3,
       },
     ];
@@ -1158,7 +1160,7 @@
           ${renderGirlPicture()}
           ${cuteGif("💕")}
           <p>
-            ❤️ Happy Birthday Sayang ❤️<br> Semoga di usia yang baru ini kamu selalu diberi kesehatan, kebahagiaan, dan kemudahan dalam setiap langkahmu. Tetap jaga diri kamu yaa, sayangi keluargamu, Orang Tersayang kamu dan terus kejar semua impian yang kamu inginkan. Terima kasih sudah menjadi bagian dari cerita dan hari-hariku. Semoga Allah selalu melindungi, memberkahi, dan memberikan yang terbaik untukmu. Semoga senyummu selalu menghiasi setiap harimu. ✨💕
+            ❤️ Happy Birthday Sayang ❤️<br> Sudahh di potong yaa kue nyaa, semoga di usia yang baru ini kamu selalu diberi kesehatan, kebahagiaan, dan kemudahan dalam setiap langkahmu. Tetap jaga diri kamu yaa, sayangi keluargamu, Orang Tersayang kamu dan terus kejar semua impian yang kamu inginkan. Terima kasih sudah menjadi bagian dari cerita dan hari-hariku. Semoga Allah selalu melindungi, memberkahi, dan memberikan yang terbaik untukmu. Semoga senyummu selalu menghiasi setiap harimu. ✨💕
           </p>
           <div class="love-note">
             Stay kind, stay strong, keep smiling, and may Allah always guide and protect you wherever you go. 🤍✨
@@ -1170,7 +1172,7 @@
         content.innerHTML = `
           <div class="memory-lane-container">
             <div class="header">
-              <h1>Memory Lane</h1>
+              <h1>Memory Lane ✨</h1>
               ${renderGirlPicture()}
               <p>
                 Di sini ada beberapa momen yang pernah kita lewatin bareng. Semuanya punya cerita dan selalu jadi kenangan yang berarti buat aku. ✨💖
@@ -1197,7 +1199,7 @@
           ${renderGirlPicture()}
           ${cuteGif("🎉")}
           <p>
-            Terima kasih ya, udah jadi Nadila yang aku kenal selama ini. Semoga di umur yang baru ini kamu makin dewasa, makin bijak dalam ngambil keputusan, dan bisa nikmatin setiap proses yang lagi kamu jalanin. Jangan lupa juga buat jaga diri, luangin waktu buat diri sendiri, dan tetap deket sama keluarga. Semoga semua yang lagi kamu usahain bisa tercapai satu per satu.🤍✨
+            Terima kasih ya, udah jadi Nadila yang aku kenal selama ini. Semoga di umur yang baru ini kamu makin dewasa, makin bijak dalam ngambil keputusan, dan bisa nikmatin setiap proses yang lagi kamu jalanin. Jangan lupa juga buat jaga diri, luangin waktu buat diri sendiri, dan tetap deket sama keluarga. Aku juga berharap semoga kita bisa terus berbagi cerita, saling dukung, dan menciptakan lebih banyak kenangan indah ke depannya. Semoga semua usaha, cita-cita, harapan, impian, dan doa-doa baik yang kamu simpan di hati bisa Allah mudahkan dan terwujud pada waktu terbaik-Nya. 🤍✨
           </p>
           <div class="love-note">
             Never stop smiling, keep believing in yourself, and always remember that you deserve all the happiness in the world. Happy Birthday, Nadila! 🤍✨
