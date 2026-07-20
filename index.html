@@ -249,11 +249,16 @@
 
     .buttons {
       display: flex;
+      justify-content: center;
       gap: 10px;
       margin-top: 14px;
+      width: 100%;
     }
 
     button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 16px;
       padding: 13px 18px;
@@ -261,16 +266,18 @@
       cursor: pointer;
       transition: 0.25s ease;
       font-size: 14px;
+      flex: 1;
+      min-width: 140px;
     }
 
     .btn-main {
-      flex: 1;
       color: white;
       background: linear-gradient(135deg, #ff5f9e, #ff2474);
       box-shadow: 0 10px 24px rgba(255, 36, 116, 0.35);
     }
 
-    .btn-main:hover {
+    .btn-main:hover,
+    .btn-soft:hover {
       transform: translateY(-2px);
     }
 
@@ -296,6 +303,224 @@
       cursor: pointer;
       animation: fall 3s linear forwards;
       user-select: none;
+    }
+
+    .memory-lane-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      text-align: left;
+    }
+
+    .memory-lane-container .header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .memory-lane-container .header h1 {
+      font-size: 2.6rem;
+      color: #ff4e91;
+      margin-bottom: 0.8rem;
+      font-family: "Poppins", Arial, sans-serif;
+      text-shadow: 2px 2px 0 rgba(255, 165, 213, 0.4);
+    }
+
+    .memory-lane-container .header p {
+      color: #8858a3;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 16px;
+      border-radius: 18px;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.18);
+      font-size: 0.98rem;
+    }
+
+    .slideshow-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      opacity: 1;
+    }
+
+    .gallery-container {
+      position: relative;
+      margin: 0 0 1.5rem;
+      border: 3px solid rgba(255, 112, 167, 0.95);
+      border-radius: 28px;
+      background: #fff0f7;
+      padding: 0.65rem;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow-x: auto;
+      gap: 1.5rem;
+      padding: 0;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+
+    .gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery::-webkit-scrollbar-track {
+      background: #ffe1f3;
+      border-radius: 10px;
+    }
+
+    .gallery::-webkit-scrollbar-thumb {
+      background: #ff6ec4;
+      border-radius: 10px;
+    }
+
+    .memory-card {
+      flex: 0 0 auto;
+      width: min(260px, calc(100% - 1.5rem));
+      min-width: 220px;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+      transform: translateY(50px) rotate(var(--rotate, 0deg));
+      opacity: 0;
+      transition: all 0.6s ease;
+      border: 6px solid white;
+      background: white;
+      scroll-snap-align: center;
+    }
+
+    .memory-card.visible {
+      transform: translateY(0) rotate(var(--rotate, 0deg));
+      opacity: 1;
+    }
+
+    .memory-img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .memory-card:hover .memory-img {
+      transform: scale(1.05);
+    }
+
+    .memory-caption {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 105, 180, 0.9);
+      color: white;
+      padding: 1rem;
+      transition: bottom 0.35s ease;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .memory-card:hover .memory-caption {
+      bottom: 0;
+    }
+
+    .card-tape {
+      position: absolute;
+      width: 100px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.86);
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(var(--rotate, 0deg));
+      z-index: 2;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-sticker {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      bottom: 10px;
+      right: 10px;
+      z-index: 3;
+      transform: rotate(15deg);
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .btn {
+      padding: 13px 18px;
+      margin: 0;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(255, 110, 196, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(255, 110, 196, 0.45);
+    }
+
+    .slideshow-controls .btn {
+      min-width: 110px;
+      padding: 14px 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #ff6ec4, #ff4e91);
+      box-shadow: 0 10px 24px rgba(255, 110, 196, 0.4);
+    }
+
+    .slideshow-controls .btn:hover {
+      background: linear-gradient(135deg, #ff4e91, #ff6ec4);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: scale(1) rotate(15deg);
+      }
+      50% {
+        transform: scale(1.2) rotate(20deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .memory-card {
+        width: 220px;
+        min-width: 220px;
+      }
+
+      .memory-lane-container .header h1 {
+        font-size: 2rem;
+      }
+
+      .slideshow-controls {
+        flex-direction: column;
+      }
     }
 
     @keyframes fall {
@@ -593,18 +818,23 @@
     </div>
   </div>
 
+  <audio id="bgMusic" src="HinggaTua.mp3" autoplay loop></audio>
+
   <script>
     let currentStep = 0;
+    const totalSteps = 6;
     let birthdayName = "Beautiful Girl";
     let gameScore = 0;
     let gameStarted = false;
     let heartInterval;
+    let memoryLaneInterval = null;
 
     const content = document.getElementById("content");
     const stepBadge = document.getElementById("stepBadge");
     const progressBar = document.getElementById("progressBar");
     const backBtn = document.getElementById("backBtn");
     const nextBtn = document.getElementById("nextBtn");
+    const bgMusic = document.getElementById("bgMusic");
 
     const girlPictures = [
       "Nala1.jpg",
@@ -658,12 +888,183 @@
       `;
     }
 
-    function renderStep() {
-      stepBadge.textContent = `Step ${currentStep + 1} of 5`;
-      progressBar.style.width = `${((currentStep + 1) / 5) * 100}%`;
+    const memories = [
+      {
+        image: "Nala1.jpg",
+        caption:
+          "Remember when we got lost hiking and found that amazing waterfall? Best wrong turn ever! 😂",
+        emoji: "🌊",
+        rotationAngle: -2,
+      },
+      {
+        image: "Nala1.jpg",
+        caption:
+          "That time we stayed up all night just talking and watching the sunrise. I've never laughed so hard in my life!",
+        emoji: "🌅",
+        rotationAngle: 3,
+      },
+      {
+        image: "3.jpg",
+        caption:
+          "Our first road trip together! You fell asleep and I drew a tiny mustache on you with a marker. You didn't notice for HOURS!",
+        emoji: "🚗",
+        rotationAngle: -1,
+      },
+      {
+        image: "4.jpg",
+        caption:
+          "Remember our cooking disaster when we tried to make that fancy recipe? The smoke alarm going off, but the pizza we ordered after was the best ever!",
+        emoji: "🍕",
+        rotationAngle: 2,
+      },
+      {
+        image: "5.jpg",
+        caption:
+          "Our camping trip under the stars. You were terrified of that tiny spider and jumped so high! Still my favorite memory.",
+        emoji: "🏕️",
+        rotationAngle: -3,
+      },
+      {
+        image: "7.jpg",
+        caption:
+          "That concert where we danced until our feet hurt. Worth every blister!",
+        emoji: "🎵",
+        rotationAngle: 1,
+      },
+      {
+        image: "8.jpg",
+        caption:
+          "When we built that epic blanket fort during the storm and watched movies all day. Best rainy day ever!",
+        emoji: "🏰",
+        rotationAngle: -2,
+      },
+      {
+        image: "1.jpg",
+        caption:
+          "Our spontaneous beach day when we skipped class. I still find sand in my backpack sometimes!",
+        emoji: "🏖️",
+        rotationAngle: 2,
+      },
+      {
+        image: "2.jpeg",
+        caption:
+          "You've always been there for me through thick and thin. I'm so grateful for your friendship. ❤️",
+        emoji: "💕",
+        rotationAngle: -1,
+      },
+      {
+        image: "3.jpg",
+        caption:
+          "Happy Birthday to my best friend in the whole world! Here's to many more adventures together!",
+        emoji: "🎂",
+        rotationAngle: 3,
+      },
+    ];
 
-      backBtn.style.visibility = currentStep === 0 ? "hidden" : "visible";
-      nextBtn.textContent = currentStep === 4 ? "Replay" : "Next";
+    function clearMemoryLaneInterval() {
+      if (memoryLaneInterval) {
+        clearInterval(memoryLaneInterval);
+        memoryLaneInterval = null;
+      }
+    }
+
+    function setupMemoryLane() {
+      const galleryElement = document.getElementById("memoryGallery");
+      const startSlideshowBtn = document.getElementById("startSlideshow");
+      const pauseSlideshowBtn = document.getElementById("pauseSlideshow");
+      const prevSlideBtn = document.getElementById("prevSlide");
+      const nextSlideBtn = document.getElementById("nextSlide");
+
+      if (!galleryElement) return;
+      galleryElement.innerHTML = "";
+
+      memories.forEach((memory, index) => {
+        const card = document.createElement("div");
+        card.className = "memory-card";
+        card.style.setProperty("--rotate", `${memory.rotationAngle}deg`);
+        card.style.animationDelay = `${index * 0.1}s`;
+
+        card.innerHTML = `
+          <div class="card-tape" style="--rotate: ${memory.rotationAngle * 2}deg"></div>
+          <img class="memory-img" src="${memory.image}" alt="Memory ${index + 1}" />
+          <div class="memory-caption">${memory.caption}</div>
+          <div class="card-sticker">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="50" fill="#ff6ec4" />
+              <text x="50" y="65" font-family="Arial" font-size="40" text-anchor="middle" fill="white">${memory.emoji}</text>
+            </svg>
+          </div>
+        `;
+
+        galleryElement.appendChild(card);
+      });
+
+      const cards = galleryElement.querySelectorAll(".memory-card");
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add("visible");
+        }, 100 + index * 80);
+      });
+
+      function scrollToSlide(index) {
+        const cards = galleryElement.querySelectorAll(".memory-card");
+        if (!cards[index]) return;
+
+        const galleryRect = galleryElement.getBoundingClientRect();
+        galleryElement.scrollTo({
+          left: cards[index].offsetLeft - galleryRect.width / 2 + cards[index].offsetWidth / 2,
+          behavior: "smooth",
+        });
+      }
+
+      function moveSlide(direction) {
+        const cards = galleryElement.querySelectorAll(".memory-card");
+        if (cards.length === 0) return;
+
+        currentSlide = (currentSlide + direction + cards.length) % cards.length;
+        scrollToSlide(currentSlide);
+      }
+
+      let currentSlide = 0;
+      startSlideshowBtn.style.display = "flex";
+      pauseSlideshowBtn.style.display = "none";
+
+      prevSlideBtn.onclick = () => {
+        moveSlide(-1);
+      };
+
+      nextSlideBtn.onclick = () => {
+        moveSlide(1);
+      };
+
+      startSlideshowBtn.onclick = () => {
+        startSlideshowBtn.style.display = "none";
+        pauseSlideshowBtn.style.display = "flex";
+        clearMemoryLaneInterval();
+        memoryLaneInterval = setInterval(() => {
+          moveSlide(1);
+        }, 3000);
+      };
+
+      pauseSlideshowBtn.onclick = () => {
+        pauseSlideshowBtn.style.display = "none";
+        startSlideshowBtn.style.display = "flex";
+        clearMemoryLaneInterval();
+      };
+
+      scrollToSlide(currentSlide);
+    }
+
+    function renderStep() {
+      stepBadge.textContent = `Step ${currentStep + 1} of ${totalSteps}`;
+      progressBar.style.width = `${((currentStep + 1) / totalSteps) * 100}%`;
+
+      if (currentStep === 0) {
+        backBtn.style.display = "none";
+      } else {
+        backBtn.style.display = "inline-flex";
+      }
+      nextBtn.textContent = currentStep === totalSteps - 1 ? "Replay" : "Next";
 
       if (currentStep === 0) {
         content.innerHTML = `
@@ -734,6 +1135,33 @@
 
         launchConfetti();
       }
+
+      if (currentStep === 5) {
+        content.innerHTML = `
+          <div class="memory-lane-container">
+            <div class="header">
+              <h1>Memory Lane</h1>
+              <p>
+                A journey through the most incredible moments we've shared together.
+                Hover over each photo to see why these memories mean so much to me! ✨💖
+              </p>
+            </div>
+
+            <div class="slideshow-controls">
+              <button id="prevSlide" class="btn">← Prev</button>
+              <button id="startSlideshow" class="btn">▶ Start Slideshow</button>
+              <button id="pauseSlideshow" class="btn" style="display: none">⏸ Pause Slideshow</button>
+              <button id="nextSlide" class="btn">Next →</button>
+            </div>
+
+            <div class="gallery-container">
+              <div class="gallery" id="memoryGallery"></div>
+            </div>
+          </div>
+        `;
+
+        setupMemoryLane();
+      }
     }
 
     nextBtn.addEventListener("click", () => {
@@ -745,9 +1173,10 @@
       }
 
       clearInterval(heartInterval);
+      clearMemoryLaneInterval();
       gameStarted = false;
 
-      if (currentStep === 4) {
+      if (currentStep === totalSteps - 1) {
         currentStep = 0;
       } else {
         currentStep++;
@@ -759,6 +1188,7 @@
     backBtn.addEventListener("click", () => {
       if (currentStep > 0) {
         clearInterval(heartInterval);
+        clearMemoryLaneInterval();
         gameStarted = false;
         currentStep--;
         renderStep();
@@ -857,7 +1287,23 @@
       }
     }
 
+    function playBackgroundMusic() {
+      if (!bgMusic) return;
+
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const resumeOnInteraction = () => {
+            bgMusic.play().catch(() => {});
+            window.removeEventListener("click", resumeOnInteraction);
+          };
+          window.addEventListener("click", resumeOnInteraction, { once: true });
+        });
+      }
+    }
+
     renderStep();
+    playBackgroundMusic();
   </script>
 
 </body>
