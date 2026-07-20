@@ -318,37 +318,46 @@
     }
 
     .memory-lane-container .header h1 {
-      font-size: 2.6rem;
-      color: #ff4e91;
-      margin-bottom: 0.8rem;
+      font-size: 28px;
+      color: #ff2f7d;
+      margin-bottom: 10px;
       font-family: "Poppins", Arial, sans-serif;
-      text-shadow: 2px 2px 0 rgba(255, 165, 213, 0.4);
+      text-shadow: none;
     }
 
     .memory-lane-container .header p {
-      color: #8858a3;
+      color: #70495b;
       max-width: 700px;
       margin: 0 auto;
       line-height: 1.7;
-      background: rgba(255, 255, 255, 0.75);
-      padding: 16px;
-      border-radius: 18px;
-      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.18);
-      font-size: 0.98rem;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 15px;
+      margin-bottom: 15px;
     }
 
     .slideshow-controls {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 18px;
       opacity: 1;
     }
 
+    .slideshow-controls .btn {
+      min-width: 100px;
+      padding: 12px 16px;
+      flex: 1;
+      max-width: 170px;
+    }
+
     .gallery-container {
       position: relative;
       margin: 0 0 1.5rem;
-      border: 3px solid rgba(255, 112, 167, 0.95);
+      border: 2px dashed rgba(255, 105, 180, 0.45);
       border-radius: 28px;
       background: #fff0f7;
       padding: 0.65rem;
@@ -397,7 +406,7 @@
       position: relative;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+      box-shadow: none;
       transform: translateY(50px) rotate(var(--rotate, 0deg));
       opacity: 0;
       transition: all 0.6s ease;
@@ -427,8 +436,8 @@
       bottom: -100%;
       left: 0;
       width: 100%;
-      background: rgba(255, 105, 180, 0.9);
-      color: white;
+      background: rgba(255, 240, 247, 0.75);
+      color: #70495b;
       padding: 1rem;
       transition: bottom 0.35s ease;
       border-bottom-left-radius: 16px;
@@ -443,21 +452,22 @@
 
     .card-tape {
       position: absolute;
-      width: 100px;
-      height: 30px;
-      background: rgba(255, 255, 255, 0.86);
-      top: -12px;
+      width: 78px;
+      height: 22px;
+      background: white;
+      top: 0;
       left: 50%;
-      transform: translateX(-50%) rotate(var(--rotate, 0deg));
+      transform: translateX(-50%);
       z-index: 2;
-      border-radius: 0 0 14px 14px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 0 0 10px 10px;
+      box-shadow: none;
     }
 
     .card-sticker {
       position: absolute;
-      width: 45px;
-      height: 45px;
+      width: 38px;
+      height: 38px;
       bottom: 10px;
       right: 10px;
       z-index: 3;
@@ -466,37 +476,44 @@
     }
 
     .btn {
-      padding: 13px 18px;
+      padding: 10px 14px;
       margin: 0;
-      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      background: linear-gradient(135deg, #ff5f9e, #ff2474);
       color: white;
       border: none;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 20px rgba(255, 110, 196, 0.35);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: none;
+      transition: none;
     }
 
     .btn:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 10px 24px rgba(255, 110, 196, 0.45);
+      transform: none;
+      box-shadow: none;
+      background: linear-gradient(135deg, #ff5f9e, #ff2474);
     }
 
     .slideshow-controls .btn {
-      min-width: 110px;
-      padding: 14px 18px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #ff6ec4, #ff4e91);
-      box-shadow: 0 10px 24px rgba(255, 110, 196, 0.4);
+      min-width: 140px;
+      padding: 13px 18px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ff5f9e, #ff2474);
+      box-shadow: none;
+      transition: transform 0.25s ease;
+    }
+
+    #prevSlide {
+      background: #fff0f7;
+      color: #ff3f87;
     }
 
     .slideshow-controls .btn:hover {
-      background: linear-gradient(135deg, #ff4e91, #ff6ec4);
+      transform: translateY(-2px);
     }
 
     @keyframes bounce {
@@ -818,7 +835,7 @@
     </div>
   </div>
 
-  <audio id="bgMusic" src="HinggaTua.mp3" autoplay loop></audio>
+  <audio id="bgMusic" src="Lany.mp3" autoplay loop></audio>
 
   <script>
     let currentStep = 0;
@@ -970,8 +987,6 @@
 
     function setupMemoryLane() {
       const galleryElement = document.getElementById("memoryGallery");
-      const startSlideshowBtn = document.getElementById("startSlideshow");
-      const pauseSlideshowBtn = document.getElementById("pauseSlideshow");
       const prevSlideBtn = document.getElementById("prevSlide");
       const nextSlideBtn = document.getElementById("nextSlide");
 
@@ -990,8 +1005,8 @@
           <div class="memory-caption">${memory.caption}</div>
           <div class="card-sticker">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="50" fill="#ff6ec4" />
-              <text x="50" y="65" font-family="Arial" font-size="40" text-anchor="middle" fill="white">${memory.emoji}</text>
+              <circle cx="50" cy="50" r="50" fill="white" />
+              <text x="50" y="65" font-family="Arial" font-size="40" text-anchor="middle" fill="#ff6ec4">${memory.emoji}</text>
             </svg>
           </div>
         `;
@@ -1026,8 +1041,6 @@
       }
 
       let currentSlide = 0;
-      startSlideshowBtn.style.display = "flex";
-      pauseSlideshowBtn.style.display = "none";
 
       prevSlideBtn.onclick = () => {
         moveSlide(-1);
@@ -1035,21 +1048,6 @@
 
       nextSlideBtn.onclick = () => {
         moveSlide(1);
-      };
-
-      startSlideshowBtn.onclick = () => {
-        startSlideshowBtn.style.display = "none";
-        pauseSlideshowBtn.style.display = "flex";
-        clearMemoryLaneInterval();
-        memoryLaneInterval = setInterval(() => {
-          moveSlide(1);
-        }, 3000);
-      };
-
-      pauseSlideshowBtn.onclick = () => {
-        pauseSlideshowBtn.style.display = "none";
-        startSlideshowBtn.style.display = "flex";
-        clearMemoryLaneInterval();
       };
 
       scrollToSlide(currentSlide);
@@ -1081,20 +1079,6 @@
 
       if (currentStep === 1) {
         content.innerHTML = `
-          <h1>A Birthday Wish for ${birthdayName} 🌸</h1>
-          ${renderGirlPicture()}
-          ${cuteGif("💕")}
-          <p>
-            ❤️ Happy Birthday Sayang ❤️<br> Semoga di usia yang baru ini kamu selalu diberi kesehatan, kebahagiaan, dan kemudahan dalam setiap langkahmu. Tetap jaga diri kamu yaa, sayangi keluargamu, Orang Tersayang kamu dan terus kejar semua impian yang kamu inginkan. Terima kasih sudah menjadi bagian dari cerita dan hari-hariku. Semoga Allah selalu melindungi, memberkahi, dan memberikan yang terbaik untukmu. Semoga senyummu selalu menghiasi setiap harimu. ✨💕
-          </p>
-          <div class="love-note">
-            Stay kind, stay strong, keep smiling, and may Allah always guide and protect you wherever you go. 🤍✨
-          </div>
-        `;
-      }
-
-      if (currentStep === 2) {
-        content.innerHTML = `
           <h1>Catch the Birthday Hearts ❤️</h1>
           ${cuteGif("💘")}
           <p>Let's play a little game! Catch all 7 hearts to unlock the next birthday surprise. 🎁💕</p>
@@ -1104,7 +1088,7 @@
         `;
       }
 
-      if (currentStep === 3) {
+      if (currentStep === 2) {
         content.innerHTML = `
           <h1>Time to Cut the Birthday Cake! 🎂</h1>
           <p>Press the button and make a birthday wish before cutting the cake. ✨</p>
@@ -1119,7 +1103,46 @@
         `;
       }
 
+      if (currentStep === 3) {
+        content.innerHTML = `
+          <h1>A Birthday Wish for ${birthdayName} 🌸</h1>
+          ${renderGirlPicture()}
+          ${cuteGif("💕")}
+          <p>
+            ❤️ Happy Birthday Sayang ❤️<br> Semoga di usia yang baru ini kamu selalu diberi kesehatan, kebahagiaan, dan kemudahan dalam setiap langkahmu. Tetap jaga diri kamu yaa, sayangi keluargamu, Orang Tersayang kamu dan terus kejar semua impian yang kamu inginkan. Terima kasih sudah menjadi bagian dari cerita dan hari-hariku. Semoga Allah selalu melindungi, memberkahi, dan memberikan yang terbaik untukmu. Semoga senyummu selalu menghiasi setiap harimu. ✨💕
+          </p>
+          <div class="love-note">
+            Stay kind, stay strong, keep smiling, and may Allah always guide and protect you wherever you go. 🤍✨
+          </div>
+        `;
+      }
+
       if (currentStep === 4) {
+        content.innerHTML = `
+          <div class="memory-lane-container">
+            <div class="header">
+              <h1>Memory Lane</h1>
+              ${renderGirlPicture()}
+              <p>
+                Di sini ada beberapa momen yang pernah kita lewatin bareng. Semuanya punya cerita dan selalu jadi kenangan yang berarti buat aku. ✨💖
+              </p>
+            </div>
+
+            <div class="slideshow-controls">
+              <button id="prevSlide" class="btn">← Prev</button>
+              <button id="nextSlide" class="btn">Next →</button>
+            </div>
+
+            <div class="gallery-container">
+              <div class="gallery" id="memoryGallery"></div>
+            </div>
+          </div>
+        `;
+
+        setupMemoryLane();
+      }
+
+      if (currentStep === 5) {
         content.innerHTML = `
           <h1>Happy Birthday, ${birthdayName}! 🎉💕</h1>
           ${renderGirlPicture()}
@@ -1134,33 +1157,6 @@
         `;
 
         launchConfetti();
-      }
-
-      if (currentStep === 5) {
-        content.innerHTML = `
-          <div class="memory-lane-container">
-            <div class="header">
-              <h1>Memory Lane</h1>
-              <p>
-                A journey through the most incredible moments we've shared together.
-                Hover over each photo to see why these memories mean so much to me! ✨💖
-              </p>
-            </div>
-
-            <div class="slideshow-controls">
-              <button id="prevSlide" class="btn">← Prev</button>
-              <button id="startSlideshow" class="btn">▶ Start Slideshow</button>
-              <button id="pauseSlideshow" class="btn" style="display: none">⏸ Pause Slideshow</button>
-              <button id="nextSlide" class="btn">Next →</button>
-            </div>
-
-            <div class="gallery-container">
-              <div class="gallery" id="memoryGallery"></div>
-            </div>
-          </div>
-        `;
-
-        setupMemoryLane();
       }
     }
 
